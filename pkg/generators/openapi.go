@@ -446,8 +446,8 @@ func getOpenAPITypeFormat(t *types.Type) (string, string, error) {
 		return "", "", err
 	}
 	if schemaTypeFormatTag == "" {
-		schemaType, format := openapi.GetOpenAPITypeFormat(t.String())
-		return schemaType, format, nil
+		schemaType, format, err := getOpenAPITypeFormat(t)
+		return schemaType, format, err
 	}
 	typeFormatPair := strings.Split(schemaTypeFormatTag, ",")
 	if len(typeFormatPair) == 1 {
